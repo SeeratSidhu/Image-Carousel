@@ -42,13 +42,15 @@ const ImageContainer = () => {
   }, [image]);
 
   return (
-    <div>
+    <div className="image-container">
+      <div className="controls">
       <Button isActive={image.cats ? "active": "inactive"} onClick={() => setImage({ ...image, cats: !image.cats })}>
         Cats
       </Button>
       <Button isActive={image.sharks ? "active": "inactive"} onClick={() => setImage({ ...image, sharks: !image.sharks })}>
         sharks
       </Button>
+      </div>
       {mode === LOADING && <Status>Loading...</Status>}
       {mode === SHOW && <ImageItem images={data}></ImageItem>}
       {mode === EMPTY && <Empty></Empty>}

@@ -1,6 +1,58 @@
-body {
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: 'Bubblegum Sans', cursive;
+}
+
+body,html {
   background-color: black;
   color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.heading {
+  
+  text-align: center;
+  font-size: 100px;
+  height: 150px;
+  padding: 10px;
+  color: rgba(235, 235, 117, 0.931);
+
+}
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(27, 24, 24);
+  height: 650px;
+}
+
+.image-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-image-container {
+ flex-grow: 2;
+  /* position: fixed;
+  z-index: 1000;
+  top: 200px; */
+  object-fit: contain;
+}
+.main-image {
+  width: 850px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px black;
+
+}
+
+.left-control, .right-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 20%;
 }
 
 .status-image {
@@ -11,17 +63,22 @@ body {
   to{ transform: rotate(360deg); }
 }
 
+.controls {
+  top: 0;
+}
+
 button {
   border: none;
-  height: 50px;
-  width: 100px;
+  height: 70px;
+  width: 150px;
   margin: 20px;
   background: transparent;
   cursor: pointer;
+  font-size: larger;
  
 }
 button.active {
-  background-color: purple;
+  background-color: #7a5ea6;
   border-radius: 20px;
   color: white;
   border: 0.5px solid rgb(141, 138, 138);
