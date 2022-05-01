@@ -51,7 +51,7 @@ const ImageContainer = () => {
         sharks
       </Button>
       </div>
-      {mode === LOADING && <Status>Loading...</Status>}
+      {mode === LOADING && <Status> Loading...</Status>}
       {mode === SHOW && <ImageItem images={data}></ImageItem>}
       {mode === EMPTY && <Empty></Empty>}
     </div>
