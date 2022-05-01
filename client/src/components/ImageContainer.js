@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+//components
 import Button from "./Button";
 import Empty from "./Empty";
 import ImageItem from "./ImageItem";
 import Status from "./Status";
-import axios from "axios";
 
 const LOADING = "LOADING";
 const EMPTY = "EMPTY";
@@ -24,11 +26,11 @@ const ImageContainer = () => {
     let route;
 
     if (image.sharks && image.cats) {
-      route = 'random';
+      route = "random";
     } else if (image.cats) {
-      route = 'cats';
+      route = "cats";
     } else if (image.sharks) {
-     route = 'sharks';
+     route = "sharks";
     }
 
     setMode(LOADING);

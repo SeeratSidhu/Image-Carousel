@@ -1,7 +1,7 @@
 
 const Navigator = (props) => {
   return (
-    <div className="navigator" onClick={props.onClick}></div>
+    <div className='navigator' onClick={props.onClick}></div>
   )
 }
 
