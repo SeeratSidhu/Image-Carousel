@@ -18,46 +18,35 @@ const ImageContainer = () => {
     if (!image.cats && !image.sharks) {
       setData(null);
       setMode(EMPTY);
+      return;
     }
+
+    let route;
 
     if (image.sharks && image.cats) {
-      setMode(LOADING);
-      axios.get("/api/random").then((response) => {
-        setTimeout(() => {
-          setMode(SHOW);
-          setData(response.data);
-        }, 200);
-      });
+      route = 'random';
+    } else if (image.cats) {
+      route = 'cats';
+    } else if (image.sharks) {
+     route = 'sharks';
     }
 
-    if (image.cats) {
-      setMode(LOADING);
-      axios.get("/api/cats").then((response) => {
-        setTimeout(() => {
-          setMode(SHOW);
-          setData(response.data);
-        }, 200);
-      });
-    }
-
-    if (image.sharks) {
-      setMode(LOADING);
-      axios.get("/api/sharks").then((response) => {
-        setTimeout(() => {
-          setMode(SHOW);
-          setData(response.data);
-        }, 200);
-      });
-    }
+    setMode(LOADING);
+    axios.get(`/api/${route}`).then((response) => {
+      setTimeout(() => {
+        setMode(SHOW);
+        setData(response.data);
+      }, 200);
+    });
 
   }, [image]);
 
   return (
     <div>
-      <Button onClick={() => setImage({ ...image, cats: !image.cats })}>
+      <Button isActive={image.cats ? "active": "inactive"} onClick={() => setImage({ ...image, cats: !image.cats })}>
         Cats
       </Button>
-      <Button onClick={() => setImage({ ...image, sharks: !image.sharks })}>
+      <Button isActive={image.sharks ? "active": "inactive"} onClick={() => setImage({ ...image, sharks: !image.sharks })}>
         sharks
       </Button>
       {mode === LOADING && <Status>Loading...</Status>}

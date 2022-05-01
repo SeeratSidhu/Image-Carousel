@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const status = (props) => {
   return (
     <div>
-      <img src='images/status.png'/>
+      <img className="status-image" src='images/status.png' alt ="loading"/>
       {props.children}
     </div>
   )
