@@ -21,8 +21,12 @@ const ImageContainer = () => {
     }
 
     if (image.sharks && image.cats) {
+      setMode(LOADING);
       axios.get("/api/random").then((response) => {
-        setData(response.data);
+        setTimeout(() => {
+          setMode(SHOW);
+          setData(response.data);
+        }, 200);
       });
     }
 
@@ -37,10 +41,15 @@ const ImageContainer = () => {
     }
 
     if (image.sharks) {
-      axios.get("/api/sharks").then((response) => setData(response.data));
+      setMode(LOADING);
+      axios.get("/api/sharks").then((response) => {
+        setTimeout(() => {
+          setMode(SHOW);
+          setData(response.data);
+        }, 200);
+      });
     }
 
-    console.log("here");
   }, [image]);
 
   return (
